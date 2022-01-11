@@ -13,6 +13,16 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="nav-link" href="{{url('/makanan')}}">Data Makanan<span class="sr-only">(current)</span></a>
+                  <li class="nav-item active">
+                  <a class="nav-link" href="{{url('/menu')}}">Menu Makanan<span class="sr-only">(current)</span></a>
+                  <li class="nav-item active">
+                  <a class="nav-link" href="{{url('/modal')}}">Modal Penjualan<span class="sr-only">(current)</span></a>
+                </ul>
+            </div>
           </nav>
           <div class="container">
               @yield("content")

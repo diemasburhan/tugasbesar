@@ -4,12 +4,16 @@
 @section('content')
   <h3>Data Makanan</h3>
   <a href="{{route('makanan.create')}}" class="btn btn-success">Tambah Data</a>
+  <br>
   <table class="table table-striped">
       <thead>
         <tr>
           <th>NO</th>
           <th>Nama Makanan</th>
           <th>Harga Makanan</th>
+          <th>Total Pembelian</th>
+          <th>Aksi</th>
+          <th></th>
         </tr>
       </thead>
       
@@ -18,7 +22,8 @@
             <tr>
               <td>{{$no++}}</td>
               <td>{{$makanan->nama_makanan}}</td>
-              <td>{{$student->harga_makanan}}</td>
+              <td>{{$makanan->harga_makanan}}</td>
+              <td>{{$makanan->total_pembelian}}</td>
               <td>
                 <a href="{{route('makanan.edit',$makanan->id)}}" class="btn btn-primary">Edit</a>
               </td>

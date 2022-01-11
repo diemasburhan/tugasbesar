@@ -32,3 +32,4 @@ Route::resource('course','CourseController');
 Route::resource('student','StudentController');
 Route::resource('faculty','FacultyController');
 Route::resource('makanan','MakananController');
+Route::resource('menu','MenuController');
