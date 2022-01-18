@@ -33,3 +33,6 @@ Route::resource('student','StudentController');
 Route::resource('faculty','FacultyController');
 Route::resource('makanan','MakananController');
 Route::resource('menu','MenuController');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
