@@ -10,6 +10,7 @@
       {{session('success')}}
   </div> 
   @endif
+  <br>
   
   <table class="table table-striped">
       <thead>

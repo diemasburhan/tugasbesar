@@ -18,7 +18,7 @@
         <input type="text" class="form-control" name="harga_menu">
     </div>
     <div class="form-group">
-        <label for="name">Gambar</label>
+        <label for="name">Gambar (Pilih Jika ingin ubah gambar )</label>
         <input type="file" class="form-control" name="gambar" accept="image/*">
     </div>
     <div class="form-group">

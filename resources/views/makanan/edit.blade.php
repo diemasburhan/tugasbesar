@@ -3,20 +3,24 @@
 @section('content')
 <h3>Edit Makanan</h3>
 
-<form method="post" action="{{route('makanan.update',$makanan->id)}}">
+<form method="post" action="{{route('makanan.update',$makanan->id)}}" enctype="multipart/form-data">
   @csrf
   @method('put')
-    <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" class="form=control" name="nama_makanan" value="{{$makanan->nama_makanan}}">
+   <div class="form-group">
+        <label for="name">Kode Menu</label>
+        <input type="text" class="form-control" value="{{ $makanan->kode_menu }}" name="kode_menu" readonly>
     </div>
     <div class="form-group">
-      <label for="name">Harga Makanan</label>
-      <input type="text" class="form=control" name="harga_makanan" value="{{$makanan->harga_makanan}}">
+        <label for="name">Nama Menu</label>
+        <input type="text" class="form-control" value="{{ $makanan->nama_menu }}" name="nama_menu">
     </div>
     <div class="form-group">
-      <label for="name">Total Pembelian</label>
-      <input type="text" class="form=control" name="total_pembelian" value="{{$makanan->total_pembelian}}">
+        <label for="name">Harga</label>
+        <input type="text" class="form-control" value="{{ $makanan->harga }}" name="harga_menu">
+    </div>
+    <div class="form-group">
+        <label for="name">Gambar</label>
+        <input type="file" class="form-control" name="gambar" accept="image/*">
     </div>
     <div class="form-group">
       <input type="submit" class="btn btn-success" value="Simpan">

@@ -16,7 +16,7 @@ class MakananController extends Controller
     public function index()
     {
         $makanans = Makanan::all();
-        return view('makanan.index',compact('makanans'));
+        return view('makanan.index', compact('makanans'));
     }
 
     /**
@@ -26,8 +26,8 @@ class MakananController extends Controller
      */
     public function create()
     {
-        $data['kode_otomatis'] = helper::kode_otomatis('M','menu','kode_menu',4);
-        return view('makanan.create',$data);
+        $data['kode_otomatis'] = helper::kode_otomatis('M', 'menu', 'kode_menu', 4);
+        return view('makanan.create', $data);
     }
 
     /**
@@ -38,16 +38,16 @@ class MakananController extends Controller
      */
     public function store(Request $request)
     {
-       $makanan = new Makanan();
-       $makanan->kode_menu = $request->kode_menu;
-       $makanan->nama_menu = $request->nama_menu;
-       $makanan->harga = $request->harga_menu;
+        $makanan = new Makanan();
+        $makanan->kode_menu = $request->kode_menu;
+        $makanan->nama_menu = $request->nama_menu;
+        $makanan->harga = $request->harga_menu;
 
-        if($request->hasFile('gambar')){
+        if ($request->hasFile('gambar')) {
             $file_gambar = $request->file('gambar');
             $folder_tujuan = 'gambar_menu/';
             $file_name = str_slug($request->nama_menu) . '.' . $file_gambar->getClientOriginalExtension();
-            $file_gambar->move($folder_tujuan,$file_name);
+            $file_gambar->move($folder_tujuan, $file_name);
 
             $makanan->gambar = $file_name;
         }
@@ -56,7 +56,7 @@ class MakananController extends Controller
 
 
         // Makanan::create($request->all());
-        return redirect('makanan')->with('success','Data Berhasil disimpan');
+        return redirect('makanan')->with('success', 'Data Berhasil disimpan');
     }
 
     /**
@@ -78,7 +78,7 @@ class MakananController extends Controller
      */
     public function edit(Makanan $makanan)
     {
-        return view('makanan.edit',compact('makanan'));
+        return view('makanan.edit', compact('makanan'));
     }
 
     /**
@@ -88,11 +88,38 @@ class MakananController extends Controller
      * @param  \App\Makanan  $makanan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Makanan $makanan)
+    public function update(Request $request, $makanan)
     {
-        $makanan->update($request->all());
-        return redirect('makanan');
+
+        // dd($makanan);
+
+        $makanan = Makanan::find($makanan);
+        $makanan->nama_menu = $request->nama_menu;
+        $makanan->harga = $request->harga_menu;
+
+        // dd($request->all());
+
+        if ($request->hasFile('gambar')) {
+
+            $file_old = 'gambar_menu/' . $makanan->gambar;
+            if(is_file($file_old)){
+                unlink($file_old);
+            }
+
+            $file_gambar = $request->file('gambar');
+            $folder_tujuan = 'gambar_menu/';
+            $file_name = str_slug($request->nama_menu) . '.' . $file_gambar->getClientOriginalExtension();
+            $file_gambar->move($folder_tujuan, $file_name);
+
+            $makanan->gambar = $file_name;
+        }
+
+        $makanan->save();
+
+        return redirect('makanan')->with('success','Data Berhasil di ubah');
     }
+
+   
 
     /**
      * Remove the specified resource from storage.
