@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Makanan;
 use App\Menu;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class MenuController extends Controller
      */
     public function index()
     {
-        return view('menu.index');
+        $data['menu'] = Makanan::orderBy('kode_menu','asc')->get();
+        return view('menu.index',$data);
     }
 
     /**

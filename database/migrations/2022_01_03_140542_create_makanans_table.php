@@ -18,6 +18,7 @@ class CreateMakanansTable extends Migration
             $table->string('nama_makanan');
             $table->string('harga_makanan');
             $table->string('total_pembelian');
+            $table->string('total_harga');
             $table->timestamps();
         });
     }

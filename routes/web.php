@@ -11,28 +11,24 @@
 |
 */
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-// use App\Course;
-// Route::get('/course',function(){
-//     $courses = Course::all();
-
-//     foreach($courses as $course){
-//         echo $course->course_name ."<br/>";
-//     }
-
-
-// });
 
 Route::resource('course','CourseController');
 Route::resource('student','StudentController');
 Route::resource('faculty','FacultyController');
 Route::resource('makanan','MakananController');
 Route::resource('menu','MenuController');
+Route::resource('modal','ModalController');
+
+
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

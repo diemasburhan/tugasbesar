@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Makanan extends Model
 {
-    protected $fillable = ['nama_makanan','harga_makanan','total_pembelian'];
+    protected $table = 'menu';
+    public $timestamps = false;
+    protected $fillable = ['nama_menu','harga','kode_menu','gambar'];
 
 }
